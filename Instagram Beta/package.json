@@ -20,8 +20,8 @@
     "express": "^4.21.2",
     "http": "^0.0.1-security",
     "live": "^0.1.19",
-    "live-server": "^1.2.2",
+    "live-server": "^1.2.0",
     "nodemon": "^3.1.9",
-    "server": "^1.0.41"
+    "server": "^0.0.3"
   }
 }
