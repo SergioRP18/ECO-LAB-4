@@ -1,5 +1,0 @@
-{
-    "watch": ["./Server/index.js"],
-    "ignore": ["ClientCreate", "ClientView"],
-    "exec": "node ./Server/index.js"
-}
