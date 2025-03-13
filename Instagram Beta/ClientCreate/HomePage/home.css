@@ -1,0 +1,56 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo de fondo y contenedor principal */
+body {
+    background-color: #f0f4f8; /* Fondo blanco suave */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+/* Estilo del contenedor del formulario */
+.container-dashboard {
+    background-color: white; /* Fondo blanco para el formulario */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #3498db; /* Azul */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 15px 0;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+}
+
+button:active {
+    background-color: #1f618d; /* Azul aún más oscuro */
+}
+
+/* Estilo para el título o texto si lo deseas agregar más tarde */
+h1 {
+    font-size: 36px;
+    color: #2c3e50; /* Color gris oscuro */
+    margin-bottom: 20px;
+}

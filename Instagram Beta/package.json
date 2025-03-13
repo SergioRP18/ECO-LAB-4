@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "nodemon ./Server/index.js",
     "start-create": "live-server ./ClientCreate --port=3000",
-    "start-view": "live-server ./ClientView --port3005"
+    "start-view": "live-server ./ClientView --port=3005"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,6 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "http": "^0.0.1-security",
-    "live": "^0.1.19",
     "live-server": "^1.2.0",
     "nodemon": "^3.1.9",
     "server": "^0.0.3"

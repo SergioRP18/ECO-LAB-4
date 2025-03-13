@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (result.ok) {
                 alert("Se ha registrado exitosamente.");
-                window.location.href = "http://127.0.0.1:3000/ClientCreate/Login/login.html";
+                window.location.href = "http://127.0.0.1:5500/Instagram%20Beta/ClientCreate/Login/login.html";
             } else {
                 alert(response.message || "Error al registrar.");
             }

@@ -23,9 +23,9 @@ formLogin.addEventListener("submit", async (event) => {
         const response = await result.json();
 
         if (result.ok) {
-            sessionStorage.setItem("loggedUser", JSON.stringify(response.user));
+            localStorage.setItem("loggedInUser", JSON.stringify(response.user))
             alert("Bienvenido");
-            window.location.href = "http://127.0.0.1:3000/ClientCreate/CreatePost/create.html";
+            window.location.href = "http://127.0.0.1:5500/Instagram%20Beta/ClientCreate/CreatePost/create.html";
         } else {
             alert(response.message || "Datos incorrectos.");
         }

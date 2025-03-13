@@ -1,0 +1,126 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo de fondo y contenedor principal */
+body {
+    background-color: #f0f4f8; /* Fondo blanco suave */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+/* Estilo para el contenedor principal */
+.container-home {
+    background-color: white; /* Fondo blanco para el contenedor */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 350px;
+    max-width: 100%;
+    min-width: 300px;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #3498db; /* Azul */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+}
+
+button:active {
+    background-color: #1f618d; /* Azul aún más oscuro */
+}
+
+/* Estilo de las secciones de usuarios y posts */
+.view-users, .view-posts {
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilo para las áreas de usuarios y posts (vacías inicialmente) */
+.users, .posts {
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3498db;
+    font-size: 18px;
+    flex-direction: column;
+}
+
+/* Estilo para el título o cualquier texto adicional */
+h1 {
+    font-size: 36px;
+    color: #2c3e50; /* Color gris oscuro */
+    margin-bottom: 20px;
+}
+
+/* Estilo para los usuarios */
+.user-item {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #2c3e50;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+.user-item:last-child {
+    border-bottom: none;
+}
+
+/* Estilo para los posts */
+.post {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #2c3e50;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Estilo cuando no hay usuarios ni publicaciones */
+.empty-state {
+    font-size: 18px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 20px;
+}

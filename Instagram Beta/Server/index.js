@@ -1,11 +1,11 @@
-import express from 'express';
-import cors from 'cors';
+const express = require("express");
+const cors = require("cors"); 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-export const db = {
+const db = {
     users: [],
     posts: [],
 };
@@ -39,6 +39,7 @@ app.post("/login", (req, res) => {
     }
 
     const user = db.users.find(user => user.username === username && user.password === password);
+    
     if (!user) {
         return res.status(401).json({ message: "Datos incorrectos." });
     }
@@ -58,6 +59,9 @@ app.post("/posts", (req, res) => {
     res.status(201).json({ message: "El post se creó con éxito." });
 });
 
+app.get("/posts", (req, res) => {
+    res.json(db.posts);
+});
 
 app.listen(5050, () => {
     console.log("Servidor corriendo en http://localhost:5050");

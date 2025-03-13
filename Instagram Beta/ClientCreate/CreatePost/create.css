@@ -1,0 +1,75 @@
+/* General container style */
+.container-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Fondo claro */
+}
+
+.content-create {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; /* Ajusta el ancho máximo */
+}
+
+/* Title style */
+.container-create h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Form field styles */
+#url, #title, #description-post {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+#url:focus, #title:focus, #description-post:focus {
+    outline: none;
+    border-color: #007bff; /* Color de borde cuando el campo está enfocado */
+}
+
+/* Submit button styles */
+#button-create {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#button-create:hover {
+    background-color: #0056b3; /* Color cuando el botón es hover */
+}
+
+#button-create:active {
+    background-color: #00408a; /* Color cuando el botón es presionado */
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .container-create {
+        padding: 10px;
+    }
+    .content-create {
+        padding: 20px;
+    }
+    #button-create {
+        font-size: 1rem;
+    }
+}
