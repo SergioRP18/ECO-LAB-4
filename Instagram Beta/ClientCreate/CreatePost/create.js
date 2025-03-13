@@ -2,29 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const formPost = document.getElementById("create-post");
 
     formPost.addEventListener("submit", async (event) => {
-        // Primero prevenimos el envío del formulario
         event.preventDefault();
 
-        // Obtenemos los valores de los campos
         const url = document.getElementById("url").value.trim();
         const title = document.getElementById("title").value.trim(); 
         const description = document.getElementById("description-post").value.trim(); 
 
-        // Verificar si los campos están vacíos
         if (!url || !title || !description) {
             alert("Todos los campos son obligatorios.");
-            return; // Si algún campo está vacío, se termina la ejecución.
+            return; 
         }
 
-        // Verificar si el usuario está logueado
-        const loggedInUser = JSON.parse(sessionStorage.getItem("loggedUser"));
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
         if (!loggedInUser) {
             alert("Inicia sesión para crear post.");
-            return; // Si no hay un usuario logueado, no se sigue con el envío.
+            return;
         }
 
         try {
-            // Enviar los datos al servidor
             const result = await fetch("http://localhost:5050/posts", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
