@@ -1,7 +1,20 @@
 const express = require("express");
-const cors = require("cors"); 
+const cors = require("cors");
+const http = require("http");
+const { Server } = require("socket.io");
+
+const userRoutes = require("./routes/user.routes");
+const postRoutes = require("./routes/post.routes");
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+    },
+});
+
 app.use(express.json());
 app.use(cors());
 
@@ -9,60 +22,25 @@ const db = {
     users: [],
     posts: [],
 };
+global.db = db;
 
-app.get("/users", (req, res) => {
-    res.json(db.users);
+app.use(userRoutes);
+app.use(postRoutes);
+
+io.on("connection", (socket) => {
+    console.log("Nuevo cliente conectado:", socket.id);
+
+    socket.on("newPost", (post) => {
+        console.log("Nuevo post recibido:", post);
+        db.posts.push(post); 
+        io.emit("postAdded", post);
+    });
+
+    socket.on("disconnect", () => {
+        console.log("Cliente desconectado:", socket.id);
+    });
 });
 
-app.post("/register", (req, res) => {
-    const { username, nickname, password } = req.body;
-
-    if (!username || !nickname || !password) {
-        return res.status(400).json({ message: "Campos obligatorios." });
-    }
-
-    const existingUser = db.users.find(user => user.username === username);
-    if (existingUser) {
-        return res.status(400).json({ message: "Usuario existente." });
-    }
-
-    db.users.push({ username, nickname, password });
-
-    res.status(201).json({ message: "Usuario registrado con éxito." });
-});
-
-app.post("/login", (req, res) => {
-    const { username, password } = req.body;
-
-    if (!username || !password) {
-        return res.status(400).json({ message: "Campos obligatorios." });
-    }
-
-    const user = db.users.find(user => user.username === username && user.password === password);
-    
-    if (!user) {
-        return res.status(401).json({ message: "Datos incorrectos." });
-    }
-
-    res.json({ user });
-});
-
-app.post("/posts", (req, res) => {
-    const { username, nickname, url, title, description } = req.body;
-
-    if (!username || !nickname || !url || !title || !description) {
-        return res.status(400).json({ message: "Campos obligatorios." });
-    }
-
-    db.posts.push({ username, nickname, url, title, description });
-
-    res.status(201).json({ message: "El post se creó con éxito." });
-});
-
-app.get("/posts", (req, res) => {
-    res.json(db.posts);
-});
-
-app.listen(5050, () => {
+server.listen(5050, () => {
     console.log("Servidor corriendo en http://localhost:5050");
 });

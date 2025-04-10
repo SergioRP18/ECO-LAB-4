@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const socket = io("http://localhost:5050"); // Conectar al servidor
+
     const resultado = document.getElementById("resultado"); 
     const resultadoPosts = document.getElementById("resultado-posts"); 
     const btnUsuarios = document.getElementById("btnUsuarios"); 
@@ -56,5 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error al obtener publicaciones:", error); 
             resultadoPosts.innerHTML = "<p>Error al cargar las publicaciones.</p>";
         }
+    });
+
+    socket.on("postAdded", (post) => {
+        const newPostHTML = `
+            <div class="post">
+                <h3>${post.title}</h3>
+                <p><strong>Autor:</strong> ${post.nickname} (@${post.username})</p>
+                <p>${post.description}</p>
+                <img src="${post.url}" class="post-image" alt="Post image">
+            </div>`;
+        resultadoPosts.innerHTML += newPostHTML;
     });
 });
