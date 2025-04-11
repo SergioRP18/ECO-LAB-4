@@ -1,10 +1,10 @@
 const db = require("../db");
 
-exports.getUsers = (req, res) => {
+const getUsers = (req, res) => {
     res.json(db.users);
 };
 
-exports.registerUser = (req, res) => {
+const registerUser = (req, res) => {
     const { username, nickname, password } = req.body;
 
     if (!username || !nickname || !password) {
@@ -20,7 +20,7 @@ exports.registerUser = (req, res) => {
     res.status(201).json({ message: "Usuario registrado con éxito." });
 };
 
-exports.loginUser = (req, res) => {
+const loginUser = (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -34,3 +34,9 @@ exports.loginUser = (req, res) => {
 
     res.json({ user });
 };
+
+module.exports = {
+    getUsers,
+    registerUser,
+    loginUser,
+}

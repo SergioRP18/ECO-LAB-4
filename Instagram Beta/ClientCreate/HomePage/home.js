@@ -1,14 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('register-button').addEventListener('click', goToRegister);
-    document.getElementById('login-button').addEventListener('click', goToLogin);
+import HomeScreen from "./screen/screen.home.js";
 
-    async function goToRegister(event) {
-        event.preventDefault(); 
-        window.location.href = 'http://127.0.0.1:5500/Instagram%20Beta/ClientCreate/Register/register.html';
-    }
+const socket = io("/", { path: "/real-time" });
 
-    async function goToLogin(event) {
-        event.preventDefault(); 
-        window.location.href = 'http://127.0.0.1:5500/Instagram%20Beta/ClientCreate/Login/login.html';
+let route = { path: "/home", data: {} };
+renderRoute(route);
+
+function renderRoute(currentRoute) {
+    switch(currentRoute?.path){
+        case "/home":
+            HomeScreen(currentRoute?.data);
+            break;
     }
-});
+};
+
+function navigateTo(path, data) {
+    route = { path, data };
+    renderRoute(route);
+  }
+
+export { navigateTo, socket };
